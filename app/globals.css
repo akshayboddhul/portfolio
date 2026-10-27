@@ -76,25 +76,26 @@
 }
 
 html.light {
-  --theme-bg-main: #F8FAFC;
+  --theme-bg-main: #EEF2FF;
   --theme-text-title: #0F172A;
   --theme-text-body: #1E293B;
   --theme-text-muted: #475569;
   --theme-text-sub: #64748B;
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-bg-hover: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(15, 23, 42, 0.09);
-  --glass-border-hover: rgba(15, 23, 42, 0.2);
-  --glass-rim: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.9) 50%, transparent 95%);
-  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --glass-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
-  --glass-pill-bg: rgba(15, 23, 42, 0.04);
-  --glass-chip-bg: rgba(15, 23, 42, 0.03);
-  --glass-nav-bg: rgba(255, 255, 255, 0.85);
-  --glass-footer-bg: rgba(255, 255, 255, 0.8);
-  --grid-line-color: rgba(203, 213, 225, 0.5);
-  --divider-line: rgba(15, 23, 42, 0.1);
+  /* True frosted glass — semi-transparent so the gradient background shows through */
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-hover: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(148, 163, 184, 0.35);
+  --glass-border-hover: rgba(100, 116, 139, 0.60);
+  --glass-rim: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 1) 50%, transparent 95%);
+  --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --glass-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  --glass-pill-bg: rgba(255, 255, 255, 0.55);
+  --glass-chip-bg: rgba(255, 255, 255, 0.50);
+  --glass-nav-bg: rgba(255, 255, 255, 0.62);
+  --glass-footer-bg: rgba(255, 255, 255, 0.58);
+  --grid-line-color: rgba(148, 163, 184, 0.18);
+  --divider-line: rgba(100, 116, 139, 0.18);
 }
 
 /* ============================================================
@@ -195,7 +196,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html.light body {
+  /* Rich ambient gradient background for glass to refract against */
+  background: linear-gradient(135deg, #E8EEFF 0%, #F5F0FF 35%, #E8F8F2 70%, #EEF6FF 100%) fixed;
+  background-attachment: fixed;
 }
 
 /* ============================================================
@@ -303,6 +310,10 @@ html.light ::-webkit-scrollbar-thumb {
   background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 53, 0.08) 0%, transparent 60%);
 }
 
+html.light .hero-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 53, 0.12) 0%, transparent 60%);
+}
+
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--divider-line) 20%, var(--divider-line) 80%, transparent);
@@ -333,7 +344,7 @@ html.light ::-webkit-scrollbar-thumb {
 .glass-panel-interactive:hover {
   background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
-  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.15), var(--glass-inset);
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.10), var(--glass-inset);
   transform: translateY(-2px);
 }
 
@@ -410,10 +421,12 @@ html.light ::-webkit-scrollbar-thumb {
    LIGHT MODE OVERRIDES
    ============================================================ */
 
+/* Main transparent so gradient background shows through */
 html.light main {
-  background-color: #F8FAFC !important;
+  background: transparent !important;
 }
 
+/* ── Text colours ── */
 html.light .text-\[\#F3F4F6\],
 html.light .text-\[\#E5E7EB\],
 html.light .text-\[\#CBD5E1\] {
@@ -437,15 +450,21 @@ html.light .text-\[\#4B5563\] {
   color: #94A3B8 !important;
 }
 
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+/* ── Borders ── */
 html.light .border-white\/10,
 html.light .border-white\/\[0\.08\],
 html.light .border-white\/\[0\.09\],
 html.light .border-white\/15,
 html.light .border-white\/20,
 html.light .border-white\/\[0\.07\] {
-  border-color: rgba(15, 23, 42, 0.09) !important;
+  border-color: rgba(148, 163, 184, 0.30) !important;
 }
 
+/* ── Inline background chips / pills ── */
 html.light .bg-white\/\[0\.015\],
 html.light .bg-white\/\[0\.02\],
 html.light .bg-white\/\[0\.025\],
@@ -453,38 +472,50 @@ html.light .bg-white\/\[0\.03\],
 html.light .bg-white\/\[0\.04\],
 html.light .bg-white\/\[0\.05\],
 html.light .bg-white\/\[0\.08\] {
-  background-color: rgba(15, 23, 42, 0.03) !important;
+  background-color: rgba(255, 255, 255, 0.50) !important;
 }
 
-html.light .text-white {
-  color: #0F172A !important;
-}
-
+/* ── Orange CTA buttons stay white text ── */
 html.light a.bg-\[\#FF6B35\],
 html.light button.bg-\[\#FF6B35\],
 html.light .bg-\[\#FF6B35\] {
   color: #FFFFFF !important;
 }
-
 html.light .bg-\[\#FF6B35\] * {
   color: #FFFFFF !important;
 }
 
-/* Keep developer terminals dark and focused */
+/* ── Keep developer terminals dark and readable ── */
 html.light .bg-black\/30,
 html.light .bg-black\/35,
 html.light .bg-black\/25 {
-  background-color: rgba(15, 23, 42, 0.95) !important;
+  background-color: rgba(10, 15, 30, 0.93) !important;
 }
 
 html.light #terminal .glass-card,
 html.light .hero-boot-term {
-  background: rgba(15, 23, 42, 0.95) !important;
-  border-color: rgba(15, 23, 42, 0.2) !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(10, 15, 30, 0.93) !important;
+  border-color: rgba(148, 163, 184, 0.25) !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15) !important;
 }
 
 html.light #terminal .font-mono,
 html.light .hero-boot-term .font-mono {
   color: initial;
+}
+
+/* ── Ambient orb glow boost in light mode ── */
+html.light .light-orb-boost {
+  opacity: 0.55 !important;
+}
+
+/* ── Badge bgAccent boost (was barely visible at 0.08 opacity) ── */
+html.light .badge-bg-accent {
+  background-color: var(--badge-accent-light) !important;
+}
+
+/* ── Card metric boxes ── */
+html.light .metric-stat-box {
+  background: rgba(255, 255, 255, 0.60) !important;
+  border-color: rgba(148, 163, 184, 0.30) !important;
 }

@@ -60,10 +60,10 @@ export default function Home() {
     <main className="min-h-screen transition-colors duration-300 relative">
       {/* Fixed global ambient light background meshes */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[45rem] h-[45rem] rounded-full bg-[#FF6B35]/[0.035] blur-[160px]" />
-        <div className="absolute top-1/3 -right-40 w-[40rem] h-[40rem] rounded-full bg-[#10D98A]/[0.03] blur-[150px]" />
-        <div className="absolute top-2/3 -left-40 w-[42rem] h-[42rem] rounded-full bg-[#8B5CF6]/[0.035] blur-[160px]" />
-        <div className="absolute -bottom-40 right-1/4 w-[45rem] h-[45rem] rounded-full bg-[#06B6D4]/[0.03] blur-[160px]" />
+        <div className="absolute -top-40 -left-40 w-[45rem] h-[45rem] rounded-full bg-[#FF6B35]/[0.035] blur-[160px] light-orb-boost" />
+        <div className="absolute top-1/3 -right-40 w-[40rem] h-[40rem] rounded-full bg-[#10D98A]/[0.03] blur-[150px] light-orb-boost" />
+        <div className="absolute top-2/3 -left-40 w-[42rem] h-[42rem] rounded-full bg-[#8B5CF6]/[0.035] blur-[160px] light-orb-boost" />
+        <div className="absolute -bottom-40 right-1/4 w-[45rem] h-[45rem] rounded-full bg-[#06B6D4]/[0.03] blur-[160px] light-orb-boost" />
       </div>
 
       <div className="relative z-10">
