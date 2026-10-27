@@ -79,15 +79,14 @@ export default function HeroSection() {
                 {BOOT_LINES.slice(0, visibleLines).map((line, i) => (
                   <div key={i} className="flex items-start gap-0">
                     <span
-                      className={`font-mono text-xs leading-5 ${
-                        line.text.startsWith("STATUS")
+                      className={`font-mono text-xs leading-5 ${line.text.startsWith("STATUS")
                           ? "text-[#10D98A] font-semibold"
                           : line.text.startsWith("$")
-                          ? "text-[#FF6B35]"
-                          : line.text.includes("[✓ OK]")
-                          ? "text-[#94A3B8]"
-                          : "text-[#6B7280]"
-                      }`}
+                            ? "text-[#FF6B35]"
+                            : line.text.includes("[✓ OK]")
+                              ? "text-[#94A3B8]"
+                              : "text-[#6B7280]"
+                        }`}
                     >
                       {line.text}
                       {i === visibleLines - 1 && visibleLines < BOOT_LINES.length && (
@@ -107,15 +106,14 @@ export default function HeroSection() {
 
             {/* Main title & content — revealed after boot */}
             <div
-              className={`space-y-6 transition-all duration-700 ${
-                showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`space-y-6 transition-all duration-700 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
             >
               {/* Experience badge with glass styling */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border-[#FF6B35]/30 bg-[#FF6B35]/10 shadow-[0_0_24px_rgba(255,107,53,0.15)]">
                 <Zap className="w-3.5 h-3.5 text-[#FF6B35]" />
                 <span className="font-mono text-xs text-[#FF6B35] font-medium tracking-wide">
-                  5+ Years · Senior Data Engineer · Fission Labs
+                  5+ Years · Senior Data Engineer · Agilisium
                 </span>
               </div>
 
@@ -215,9 +213,8 @@ export default function HeroSection() {
 
           {/* ── RIGHT COLUMN — Medallion Pipeline ── */}
           <div
-            className={`flex justify-center animate-slide-in-right transition-all duration-700 ${
-              showContent ? "opacity-100" : "opacity-0"
-            }`}
+            className={`flex justify-center animate-slide-in-right transition-all duration-700 ${showContent ? "opacity-100" : "opacity-0"
+              }`}
           >
             <div className="w-full max-w-sm">
               <div className="mb-4 flex items-center justify-center gap-2">
