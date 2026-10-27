@@ -30,74 +30,81 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className="group relative rounded-xl border border-[#1E2D45] bg-[#111827] overflow-hidden transition-all duration-300 hover:border-opacity-80 flex flex-col"
+      className="glass-card-interactive group relative rounded-2xl overflow-hidden flex flex-col"
       style={{
-        borderColor: `${project.accentColor}20`,
+        borderColor: "rgba(255, 255, 255, 0.08)",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = `${project.accentColor}60`;
-        el.style.boxShadow = `0 0 40px ${project.glowColor}, 0 8px 32px rgba(0,0,0,0.5)`;
+        el.style.borderColor = `${project.accentColor}70`;
+        el.style.boxShadow = `0 0 45px ${project.glowColor}, 0 16px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25)`;
+        el.style.backgroundColor = "rgba(22, 33, 56, 0.65)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = `${project.accentColor}20`;
-        el.style.boxShadow = "none";
+        el.style.borderColor = "rgba(255, 255, 255, 0.08)";
+        el.style.boxShadow = "0 12px 36px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.12)";
+        el.style.backgroundColor = "rgba(17, 24, 39, 0.45)";
       }}
     >
+      <div className="glass-rim-top" />
+
       {/* Subtle top accent line */}
       <div
-        className="h-px w-full"
+        className="h-[2px] w-full"
         style={{
-          background: `linear-gradient(90deg, transparent, ${project.accentColor}88, transparent)`,
+          background: `linear-gradient(90deg, transparent, ${project.accentColor}aa, transparent)`,
         }}
       />
 
       {/* Card body */}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-6 sm:p-7 flex flex-col flex-1">
         {/* Header row */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-2">
-            {/* Status indicator */}
-            <div className="flex items-center gap-1.5">
+            {/* Status indicator in glass pill */}
+            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full glass-pill border-white/10">
               <div
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: statusColor, boxShadow: `0 0 6px ${statusColor}` }}
+                className="w-1.5 h-1.5 rounded-full animate-pulse"
+                style={{ backgroundColor: statusColor, boxShadow: `0 0 8px ${statusColor}` }}
               />
-              <span className="font-mono text-[10px]" style={{ color: statusColor }}>
+              <span className="font-mono text-[10px] font-semibold" style={{ color: statusColor }}>
                 {project.status.toUpperCase()}
               </span>
             </div>
-            <span className="text-[#1E2D45]">·</span>
-            <span className="font-mono text-[10px] text-[#4B5563]">
+            <span className="text-white/10">·</span>
+            <span className="font-mono text-[10px] text-[#94A3B8]">
               JOB_RUN {project.jobRun}
             </span>
           </div>
 
-          <button className="group/btn flex items-center gap-1 text-[#4B5563] hover:text-[#FF6B35] transition-colors duration-200">
+          <button
+            aria-label="View project details"
+            className="group/btn flex items-center gap-1 text-[#94A3B8] hover:text-[#FF6B35] transition-colors duration-200 p-1 rounded-lg hover:bg-white/[0.05]"
+          >
             <ExternalLink className="w-3.5 h-3.5" />
           </button>
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-[#E5E7EB] mb-2 group-hover:text-white transition-colors duration-200 leading-snug">
+        <h3 className="text-lg sm:text-xl font-bold text-[#F3F4F6] mb-2 group-hover:text-white transition-colors duration-200 leading-snug">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-[#6B7280] text-sm leading-relaxed mb-4">
+        <p className="text-[#9CA3AF] text-sm leading-relaxed mb-5">
           {project.longDescription}
         </p>
 
-        {/* Micro-tags */}
-        <div className="flex flex-wrap gap-2 mb-5">
+        {/* Micro-tags with glass styling */}
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map((tag) => (
             <span
               key={tag.label}
-              className="font-mono text-[10px] px-2.5 py-1 rounded-md border transition-all duration-200"
+              className="font-mono text-[11px] px-2.5 py-1 rounded-lg border transition-all duration-200 glass-chip"
               style={{
-                borderColor: `${tag.color}33`,
-                backgroundColor: `${tag.color}10`,
+                borderColor: `${tag.color}40`,
+                backgroundColor: `${tag.color}12`,
                 color: tag.color,
               }}
             >
@@ -106,21 +113,29 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        {/* Metrics grid */}
-        <div className="grid grid-cols-2 gap-3 mb-5">
+        {/* Metrics grid — nested micro-glass tiles */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
           {project.metrics.map((metric) => {
             const Icon = metric.icon;
             return (
               <div
                 key={metric.label}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-[#1E2D45] bg-[#0d1117]"
+                className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-md"
               >
-                <Icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: metric.color }} />
+                <div
+                  className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{
+                    backgroundColor: `${metric.color}15`,
+                    borderColor: `${metric.color}30`,
+                  }}
+                >
+                  <Icon className="w-3.5 h-3.5" style={{ color: metric.color }} />
+                </div>
                 <div>
-                  <div className="font-mono text-xs font-semibold" style={{ color: metric.color }}>
+                  <div className="font-mono text-xs font-bold" style={{ color: metric.color }}>
                     {metric.value}
                   </div>
-                  <div className="font-mono text-[9px] text-[#4B5563] uppercase tracking-wide">
+                  <div className="font-mono text-[9px] text-[#94A3B8] uppercase tracking-wide font-medium">
                     {metric.label}
                   </div>
                 </div>
@@ -130,39 +145,39 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Uptime / progress bar */}
-        <div className="mt-auto">
+        <div className="mt-auto pt-2">
           <div className="flex justify-between items-center mb-1.5">
             <div className="flex items-center gap-1.5">
-              <Activity className="w-3 h-3 text-[#4B5563]" />
-              <span className="font-mono text-[10px] text-[#4B5563]">System Uptime</span>
+              <Activity className="w-3 h-3 text-[#94A3B8]" />
+              <span className="font-mono text-[10px] text-[#94A3B8] font-medium">System SLA Uptime</span>
             </div>
-            <span className="font-mono text-[10px]" style={{ color: project.accentColor }}>
+            <span className="font-mono text-[10px] font-bold" style={{ color: project.accentColor }}>
               {project.uptime}%
             </span>
           </div>
-          <div className="h-1.5 rounded-full bg-[#1E2D45] overflow-hidden">
+          <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden p-[1px]">
             <div
               className="h-full rounded-full"
               style={{
                 width: PROGRESS_WIDTH(project.uptime),
                 background: `linear-gradient(90deg, ${project.accentColor}80, ${project.accentColor})`,
-                boxShadow: `0 0 8px ${project.accentColor}66`,
+                boxShadow: `0 0 10px ${project.accentColor}`,
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* Bottom metadata bar */}
-      <div className="px-6 py-3 border-t border-[#1E2D45] bg-[#0d1117] flex items-center gap-4 flex-wrap">
-        <div className="font-mono text-[10px] text-[#4B5563]">
-          <span className="text-[#6B7280]">Compute: </span>
-          <span style={{ color: project.accentColor }}>{project.compute}</span>
+      {/* Bottom metadata bar — Frosted footer */}
+      <div className="px-6 py-3.5 border-t border-white/[0.08] bg-white/[0.02] backdrop-blur-md flex items-center gap-4 flex-wrap">
+        <div className="font-mono text-[10px] text-[#94A3B8]">
+          <span className="text-[#9CA3AF]">Compute: </span>
+          <span className="font-semibold" style={{ color: project.accentColor }}>{project.compute}</span>
         </div>
-        <span className="text-[#1E2D45]">·</span>
-        <div className="font-mono text-[10px] text-[#4B5563]">
-          <span className="text-[#6B7280]">Target: </span>
-          <span style={{ color: project.accentColor }}>{project.target}</span>
+        <span className="text-white/10">·</span>
+        <div className="font-mono text-[10px] text-[#94A3B8]">
+          <span className="text-[#9CA3AF]">Target: </span>
+          <span className="font-semibold" style={{ color: project.accentColor }}>{project.target}</span>
         </div>
       </div>
     </div>

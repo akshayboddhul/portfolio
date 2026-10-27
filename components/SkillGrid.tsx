@@ -17,9 +17,9 @@ const SKILL_CATEGORIES = [
     title: "Programming & Data Processing",
     code: "lang.runtime",
     color: "#FF6B35",
-    borderColor: "border-[#FF6B35]/20",
+    borderColor: "border-[#FF6B35]/25",
     hoverBorder: "hover:border-[#FF6B35]/60",
-    glowColor: "rgba(255,107,53,0.15)",
+    glowColor: "rgba(255,107,53,0.18)",
     skills: ["Python", "SQL", "PySpark", "Apache Spark"],
   },
   {
@@ -27,9 +27,9 @@ const SKILL_CATEGORIES = [
     title: "Data Engineering & Big Data",
     code: "pipeline.engine",
     color: "#F59E0B",
-    borderColor: "border-[#F59E0B]/20",
+    borderColor: "border-[#F59E0B]/25",
     hoverBorder: "hover:border-[#F59E0B]/60",
-    glowColor: "rgba(245,158,11,0.15)",
+    glowColor: "rgba(245,158,11,0.18)",
     skills: [
       "Databricks",
       "Delta Lake",
@@ -44,9 +44,9 @@ const SKILL_CATEGORIES = [
     title: "Cloud & Distributed Systems",
     code: "cloud.infra",
     color: "#3B82F6",
-    borderColor: "border-[#3B82F6]/20",
+    borderColor: "border-[#3B82F6]/25",
     hoverBorder: "hover:border-[#3B82F6]/60",
-    glowColor: "rgba(59,130,246,0.15)",
+    glowColor: "rgba(59,130,246,0.18)",
     skills: [
       "AWS S3",
       "AWS Glue",
@@ -63,11 +63,11 @@ const SKILL_CATEGORIES = [
   {
     icon: Database,
     title: "Databases & Data Warehousing",
-    code: "storage.layer",
+    code: "storage.engine",
     color: "#10D98A",
-    borderColor: "border-[#10D98A]/20",
+    borderColor: "border-[#10D98A]/25",
     hoverBorder: "hover:border-[#10D98A]/60",
-    glowColor: "rgba(16,217,138,0.12)",
+    glowColor: "rgba(16,217,138,0.18)",
     skills: [
       "PostgreSQL",
       "MySQL",
@@ -75,27 +75,27 @@ const SKILL_CATEGORIES = [
       "ClickHouse",
       "Rockset",
       "CrateDB",
-      "Amazon Redshift",
+      "Redshift",
     ],
   },
   {
     icon: Server,
     title: "Backend & APIs",
-    code: "api.services",
+    code: "api.gateway",
     color: "#06B6D4",
-    borderColor: "border-[#06B6D4]/20",
+    borderColor: "border-[#06B6D4]/25",
     hoverBorder: "hover:border-[#06B6D4]/60",
-    glowColor: "rgba(6,182,212,0.12)",
-    skills: ["FastAPI", "REST APIs", "JWT Authentication"],
+    glowColor: "rgba(6,182,212,0.18)",
+    skills: ["FastAPI", "REST APIs", "JWT Auth", "API Design"],
   },
   {
     icon: HardDrive,
     title: "Data Modeling & Governance",
     code: "governance.layer",
     color: "#94A3B8",
-    borderColor: "border-[#94A3B8]/20",
+    borderColor: "border-[#94A3B8]/25",
     hoverBorder: "hover:border-[#94A3B8]/60",
-    glowColor: "rgba(148,163,184,0.12)",
+    glowColor: "rgba(148,163,184,0.18)",
     skills: [
       "Star Schema",
       "Data Modeling",
@@ -109,9 +109,9 @@ const SKILL_CATEGORIES = [
     title: "AI / LLM Systems",
     code: "ai.inference",
     color: "#8B5CF6",
-    borderColor: "border-[#8B5CF6]/20",
+    borderColor: "border-[#8B5CF6]/25",
     hoverBorder: "hover:border-[#8B5CF6]/60",
-    glowColor: "rgba(139,92,246,0.15)",
+    glowColor: "rgba(139,92,246,0.18)",
     skills: ["LangChain", "RAG", "FAISS", "Ollama"],
   },
   {
@@ -119,9 +119,9 @@ const SKILL_CATEGORIES = [
     title: "Tools & Platforms",
     code: "ops.toolchain",
     color: "#EC4899",
-    borderColor: "border-[#EC4899]/20",
+    borderColor: "border-[#EC4899]/25",
     hoverBorder: "hover:border-[#EC4899]/60",
-    glowColor: "rgba(236,72,153,0.12)",
+    glowColor: "rgba(236,72,153,0.18)",
     skills: ["Docker", "Jenkins", "Git", "Linux/Unix", "Tableau"],
   },
 ];
@@ -135,58 +135,62 @@ function CategoryCard({
 
   return (
     <div
-      className={`group relative rounded-xl border ${category.borderColor} ${category.hoverBorder}
-        bg-[#111827] p-5 transition-all duration-300 cursor-default flex flex-col`}
-      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.4)" }}
+      className="group relative rounded-2xl glass-panel-interactive p-6 transition-all duration-300 cursor-default flex flex-col overflow-hidden"
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 0 28px ${category.glowColor}, 0 4px 20px rgba(0,0,0,0.4)`;
-        (e.currentTarget as HTMLElement).style.backgroundColor = "#131f30";
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = `${category.color}60`;
+        el.style.boxShadow = `0 0 36px ${category.glowColor}, 0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)`;
+        el.style.backgroundColor = "rgba(22, 33, 56, 0.65)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 3px rgba(0,0,0,0.4)";
-        (e.currentTarget as HTMLElement).style.backgroundColor = "#111827";
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = "rgba(255, 255, 255, 0.08)";
+        el.style.boxShadow = "0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)";
+        el.style.backgroundColor = "rgba(17, 24, 39, 0.42)";
       }}
     >
+      <div className="glass-rim-top" />
+
       {/* Card header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center border flex-shrink-0"
+            className="w-9 h-9 rounded-xl flex items-center justify-center border flex-shrink-0 glass-pill"
             style={{
-              borderColor: `${category.color}33`,
-              backgroundColor: `${category.color}12`,
+              borderColor: `${category.color}40`,
+              backgroundColor: `${category.color}15`,
             }}
           >
-            <Icon size={15} style={{ color: category.color }} />
+            <Icon size={17} style={{ color: category.color }} />
           </div>
           <div>
-            <h3 className="text-[#E5E7EB] font-semibold text-sm leading-tight">
+            <h3 className="text-[#F3F4F6] font-bold text-sm leading-tight group-hover:text-white transition-colors">
               {category.title}
             </h3>
-            <span className="font-mono text-[10px] text-[#4B5563]">
+            <span className="font-mono text-[10px] text-[#94A3B8]">
               {category.code}
             </span>
           </div>
         </div>
         {/* Live run indicator */}
-        <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-[#1E2D45] bg-[#0B0F19] flex-shrink-0">
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full glass-pill border-white/10 flex-shrink-0">
           <div
             className="w-1.5 h-1.5 rounded-full animate-pulse"
-            style={{ backgroundColor: category.color }}
+            style={{ backgroundColor: category.color, boxShadow: `0 0 8px ${category.color}` }}
           />
-          <span className="font-mono text-[9px] text-[#4B5563]">RUN</span>
+          <span className="font-mono text-[9px] text-[#94A3B8] font-semibold">ONLINE</span>
         </div>
       </div>
 
       {/* Skill chips */}
-      <div className="flex flex-wrap gap-1.5 flex-1">
+      <div className="flex flex-wrap gap-1.5 flex-1 my-2">
         {category.skills.map((skill) => (
           <span
             key={skill}
-            className="font-mono text-[10px] px-2 py-0.5 rounded border transition-all duration-200 group-hover:border-opacity-60"
+            className="font-mono text-[11px] px-2.5 py-1 rounded-lg border transition-all duration-200 glass-chip"
             style={{
-              borderColor: `${category.color}33`,
-              backgroundColor: `${category.color}0d`,
+              borderColor: `${category.color}35`,
+              backgroundColor: `${category.color}10`,
               color: category.color,
             }}
           >
@@ -196,13 +200,17 @@ function CategoryCard({
       </div>
 
       {/* Footer */}
-      <div className="mt-4 pt-3 border-t border-[#1E2D45] flex items-center justify-between">
-        <span className="font-mono text-[10px] text-[#4B5563]">
+      <div className="mt-4 pt-3.5 border-t border-white/[0.08] flex items-center justify-between">
+        <span className="font-mono text-[10px] text-[#94A3B8] font-medium">
           {category.skills.length} skills indexed
         </span>
         <div
-          className="font-mono text-[10px] px-2 py-0.5 rounded"
-          style={{ backgroundColor: `${category.color}15`, color: category.color }}
+          className="font-mono text-[10px] px-2.5 py-0.5 rounded-full glass-pill font-medium"
+          style={{
+            borderColor: `${category.color}40`,
+            backgroundColor: `${category.color}15`,
+            color: category.color,
+          }}
         >
           active
         </div>
@@ -213,57 +221,46 @@ function CategoryCard({
 
 export default function SkillGrid() {
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-24 relative overflow-hidden">
+      {/* Background ambient glow orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 -left-20 w-96 h-96 rounded-full bg-[#06B6D4]/8 blur-[130px]" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#8B5CF6]/8 blur-[130px]" />
+      </div>
+
       <div className="section-divider mb-16" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section header */}
         <div className="mb-12 animate-fade-in-up">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 max-w-8 bg-[#FF6B35]/50" />
-            <span className="font-mono text-xs text-[#FF6B35] tracking-widest uppercase">
+            <span className="font-mono text-xs text-[#FF6B35] tracking-widest uppercase font-semibold">
               Core Infrastructure Grid
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#E5E7EB]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#F3F4F6]">
             The Skill{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #FF6B35, #F59E0B)",
+                background: "linear-gradient(135deg, #FF6B35 0%, #ff9561 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Topography
+              Taxonomy
             </span>
           </h2>
-          <p className="mt-3 text-[#6B7280] max-w-xl">
-            Full-stack data engineering capabilities — from distributed compute and
-            cloud data lakes to AI systems, backend APIs, and modern DevOps tooling.
+          <p className="text-[#9CA3AF] text-sm mt-2 max-w-xl">
+            8 domain specializations across modern data engineering, lakehouse architecture,
+            cloud infrastructure, and AI engineering.
           </p>
-
-          {/* Stats row */}
-          <div className="mt-6 flex flex-wrap gap-4">
-            {[
-              { val: "8", label: "Skill Domains" },
-              { val: "40+", label: "Technologies" },
-              { val: "5+", label: "Years Active" },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#1E2D45] bg-[#111827]"
-              >
-                <span className="font-mono text-sm font-bold text-[#FF6B35]">{s.val}</span>
-                <span className="font-mono text-[11px] text-[#4B5563]">{s.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* 4-col grid on xl, 2-col on md, 1-col on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-fade-in-up delay-200">
-          {SKILL_CATEGORIES.map((cat) => (
-            <CategoryCard key={cat.title} category={cat} />
+        {/* 8-category 2-column grid on desktop, 1-column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {SKILL_CATEGORIES.map((category) => (
+            <CategoryCard key={category.code} category={category} />
           ))}
         </div>
       </div>

@@ -112,21 +112,27 @@ const PROJECTS: Project[] = [
 
 export default function CaseStudies() {
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background ambient glow orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -right-20 w-[30rem] h-[30rem] rounded-full bg-[#FF6B35]/7 blur-[140px]" />
+        <div className="absolute bottom-10 left-10 w-[28rem] h-[28rem] rounded-full bg-[#8B5CF6]/7 blur-[130px]" />
+      </div>
+
       <div className="section-divider mb-16" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section header */}
         <div className="mb-12 animate-fade-in-up">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 max-w-8 bg-[#FF6B35]/50" />
-            <span className="font-mono text-xs text-[#FF6B35] tracking-widest uppercase">
+            <span className="font-mono text-xs text-[#FF6B35] tracking-widest uppercase font-semibold">
               Architectural Case Studies
             </span>
           </div>
           <div className="flex items-start justify-between flex-wrap gap-4">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#E5E7EB]">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#F3F4F6]">
                 The Job Runs{" "}
                 <span
                   style={{
@@ -138,25 +144,25 @@ export default function CaseStudies() {
                   Ledger
                 </span>
               </h2>
-              <p className="mt-3 text-[#6B7280] max-w-xl">
+              <p className="mt-3 text-[#9CA3AF] max-w-xl">
                 Production-grade data platforms and AI engineering systems —
                 built at Fission Labs and beyond.
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#1E2D45] bg-[#111827]">
-                <div className="w-2 h-2 rounded-full bg-[#10D98A] animate-pulse" />
-                <span className="font-mono text-xs text-[#6B7280]">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel border-white/10">
+                <div className="w-2 h-2 rounded-full bg-[#10D98A] animate-pulse shadow-[0_0_8px_#10D98A]" />
+                <span className="font-mono text-xs text-[#CBD5E1] font-medium">
                   4 projects · all systems operational
                 </span>
               </div>
               <div className="flex gap-2">
-                <div className="flex items-center gap-1.5 px-3 py-1 rounded border border-[#FF6B35]/20 bg-[#FF6B35]/8">
-                  <span className="font-mono text-[10px] text-[#FF6B35]">2 Professional</span>
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg glass-chip border-[#FF6B35]/30 bg-[#FF6B35]/10">
+                  <span className="font-mono text-[10px] text-[#FF6B35] font-semibold">2 Professional</span>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1 rounded border border-[#8B5CF6]/20 bg-[#8B5CF6]/8">
-                  <span className="font-mono text-[10px] text-[#8B5CF6]">2 Side Projects</span>
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg glass-chip border-[#8B5CF6]/30 bg-[#8B5CF6]/10">
+                  <span className="font-mono text-[10px] text-[#8B5CF6] font-semibold">2 Side Projects</span>
                 </div>
               </div>
             </div>
