@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg-base: #0B0F19;
+  --color-surface: #111827;
+  --color-surface-2: #1A2133;
+  --color-surface-3: #1f2d42;
+  --color-border: #1E2D45;
+  --color-border-bright: #2a3f5c;
+
+  --color-orange: #FF6B35;
+  --color-orange-dim: #cc4e1e;
+  --color-orange-glow: rgba(255, 107, 53, 0.25);
+  --color-orange-glow-sm: rgba(255, 107, 53, 0.12);
+
+  --color-emerald: #10D98A;
+  --color-emerald-dim: #0aac6e;
+  --color-emerald-glow: rgba(16, 217, 138, 0.2);
+
+  --color-amber: #F59E0B;
+  --color-amber-glow: rgba(245, 158, 11, 0.2);
+
+  --color-silver: #94A3B8;
+  --color-silver-glow: rgba(148, 163, 184, 0.2);
+
+  --color-blue: #3B82F6;
+  --color-blue-glow: rgba(59, 130, 246, 0.2);
+  --color-purple: #8B5CF6;
+  --color-cyan: #06B6D4;
+
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted: #4B5563;
+  --color-text-mono: #94A3B8;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --animate-blink: blink 1s step-end infinite;
+  --animate-flow-down: flow-down 1.8s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.7s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.7s ease-out forwards;
+  --animate-typing: typing 3s steps(40, end) forwards;
+  --animate-scan-line: scan-line 3s linear infinite;
+  --animate-node-pulse: node-pulse 2s ease-in-out infinite;
+  --animate-data-packet: data-packet 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes flow-down {
+  0%   { transform: translateY(-8px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(56px); opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--color-orange-glow); }
+  50%       { box-shadow: 0 0 24px var(--color-orange-glow), 0 0 48px var(--color-orange-glow-sm); }
+}
+
+@keyframes emerald-glow-pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--color-emerald-glow); }
+  50%       { box-shadow: 0 0 20px var(--color-emerald-glow), 0 0 40px rgba(16, 217, 138, 0.1); }
+}
+
+@keyframes amber-glow-pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--color-amber-glow); }
+  50%       { box-shadow: 0 0 20px var(--color-amber-glow), 0 0 40px rgba(245, 158, 11, 0.1); }
+}
+
+@keyframes silver-glow-pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--color-silver-glow); }
+  50%       { box-shadow: 0 0 20px var(--color-silver-glow), 0 0 40px rgba(148, 163, 184, 0.1); }
+}
+
+@keyframes fade-in-up {
+  0%   { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  0%   { opacity: 0; transform: translateX(-32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  0%   { opacity: 0; transform: translateX(32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes node-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%       { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes data-packet {
+  0%   { top: -6px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: calc(100% + 6px); opacity: 0; }
+}
+
+@keyframes scan-line {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes terminal-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   GLOBAL BASE STYLES
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  background-color: #0B0F19;
+  color: #E5E7EB;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   CUSTOM UTILITY CLASSES
+   ============================================================ */
+
+.font-mono {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Glow utilities */
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.35), 0 0 60px rgba(255, 107, 53, 0.1);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 217, 138, 0.35), 0 0 60px rgba(16, 217, 138, 0.1);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35), 0 0 60px rgba(245, 158, 11, 0.1);
+}
+
+.glow-silver {
+  box-shadow: 0 0 20px rgba(148, 163, 184, 0.35), 0 0 60px rgba(148, 163, 184, 0.1);
+}
+
+.text-glow-orange {
+  text-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.3);
+}
+
+.text-glow-emerald {
+  text-shadow: 0 0 16px rgba(16, 217, 138, 0.6);
+}
+
+/* Animated border gradient */
+.border-gradient-orange {
+  border-image: linear-gradient(135deg, #FF6B35, #cc4e1e) 1;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(30, 45, 69, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 45, 69, 0.3) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Noise texture overlay */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 9999;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2D45;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B35;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 107, 53, 0.25);
+  color: #FF6B35;
+}
+
+/* Animation utility classes */
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-emerald-pulse {
+  animation: emerald-glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-amber-pulse {
+  animation: amber-glow-pulse 2.5s ease-in-out infinite;
+}
+
+.animate-silver-pulse {
+  animation: silver-glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.7s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.7s ease-out forwards;
+}
+
+.animate-node-pulse {
+  animation: node-pulse 2s ease-in-out infinite;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-900 { animation-delay: 900ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1200 { animation-delay: 1200ms; }
+.delay-1500 { animation-delay: 1500ms; }
+
+/* Radial gradient glow backgrounds */
+.hero-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 53, 0.08) 0%, transparent 60%);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30, 45, 69, 0.8) 20%, rgba(30, 45, 69, 0.8) 80%, transparent);
+}
