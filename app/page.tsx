@@ -57,7 +57,7 @@ function Footer() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0B0F19] relative">
+    <main className="min-h-screen transition-colors duration-300 relative">
       {/* Fixed global ambient light background meshes */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[45rem] h-[45rem] rounded-full bg-[#FF6B35]/[0.035] blur-[160px]" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { Activity, Cpu } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "#skills", label: "skills" },
@@ -26,8 +27,8 @@ export default function NavBar() {
               core-engine
             </span>
           </div>
-          <span className="text-white/10">|</span>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full glass-pill border-emerald-500/20 bg-emerald-500/[0.05]">
+          <span className="text-white/10 hidden sm:inline">|</span>
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full glass-pill border-emerald-500/20 bg-emerald-500/[0.05]">
             <Activity className="w-3 h-3 text-[#10D98A]" />
             <span className="font-mono text-[11px] text-[#10D98A] font-semibold animate-emerald-pulse">
               CLUSTER ONLINE
@@ -45,17 +46,24 @@ export default function NavBar() {
           <span className="font-mono text-xs text-[#9CA3AF]">Spark 3.5.1</span>
         </div>
 
-        {/* Right: Nav links */}
-        <div className="flex items-center gap-1">
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="font-mono text-xs text-[#9CA3AF] hover:text-white px-3 py-1 rounded-lg transition-all duration-200 hover:bg-white/[0.08] hover:border hover:border-white/15"
-            >
-              {label}
-            </a>
-          ))}
+        {/* Right: Nav links & Theme Switcher */}
+        <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1">
+            {NAV_LINKS.map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="font-mono text-xs text-[#9CA3AF] hover:text-white px-2.5 sm:px-3 py-1 rounded-lg transition-all duration-200 hover:bg-white/[0.08] hover:border hover:border-white/15"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <span className="text-white/10 mx-1">|</span>
+
+          {/* Theme toggle */}
+          <ThemeToggle />
         </div>
       </div>
     </nav>

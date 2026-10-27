@@ -58,7 +58,7 @@ export default function HeroSection() {
           <div className="space-y-8 animate-slide-in-left">
 
             {/* Terminal boot sequence with frosted glass */}
-            <div className="glass-card rounded-2xl relative overflow-hidden shadow-[0_16px_50px_rgba(0,0,0,0.6)]">
+            <div className="glass-card hero-boot-term rounded-2xl relative overflow-hidden shadow-[0_16px_50px_rgba(0,0,0,0.6)]">
               <div className="glass-rim-top" />
               {/* Window chrome */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.08] bg-white/[0.03] backdrop-blur-md">
