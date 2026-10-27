@@ -45,10 +45,10 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 overflow-hidden grid-bg hero-glow">
       {/* Background ambient refractive glow orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] rounded-full bg-[#FF6B35]/10 blur-[130px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[26rem] h-[26rem] rounded-full bg-[#10D98A]/10 blur-[120px]" />
-        <div className="absolute top-1/2 right-1/3 w-80 h-80 rounded-full bg-[#8B5CF6]/10 blur-[110px]" />
-        <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#06B6D4]/5 blur-[140px]" />
+        <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] rounded-full bg-[#FF6B35]/10 blur-[130px] animate-pulse light-orb-boost" />
+        <div className="absolute bottom-1/4 right-1/4 w-[26rem] h-[26rem] rounded-full bg-[#10D98A]/10 blur-[120px] light-orb-boost" />
+        <div className="absolute top-1/2 right-1/3 w-80 h-80 rounded-full bg-[#8B5CF6]/10 blur-[110px] light-orb-boost" />
+        <div className="absolute top-10 right-10 w-96 h-96 rounded-full bg-[#06B6D4]/5 blur-[140px] light-orb-boost" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full">

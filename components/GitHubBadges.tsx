@@ -47,6 +47,12 @@ const BADGES = [
   },
 ];
 
+/** Detect current theme without importing context */
+function isLightMode() {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("light");
+}
+
 function BadgeCard({ badge }: { badge: (typeof BADGES)[0] }) {
   const Icon = badge.icon;
 
@@ -55,15 +61,27 @@ function BadgeCard({ badge }: { badge: (typeof BADGES)[0] }) {
       className="glass-card-interactive group relative rounded-2xl p-7 flex flex-col items-center text-center transition-all duration-300 cursor-default overflow-hidden"
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
+        const light = isLightMode();
         el.style.borderColor = `${badge.hoverBorder}70`;
-        el.style.boxShadow = `0 0 45px ${badge.glowColor}, 0 16px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25)`;
-        el.style.backgroundColor = "rgba(23, 35, 58, 0.65)";
+        el.style.boxShadow = light
+          ? `0 0 45px ${badge.glowColor}, 0 16px 48px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.95)`
+          : `0 0 45px ${badge.glowColor}, 0 16px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25)`;
+        el.style.backgroundColor = light
+          ? "rgba(255, 255, 255, 0.72)"
+          : "rgba(23, 35, 58, 0.65)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.borderColor = "rgba(255, 255, 255, 0.08)";
-        el.style.boxShadow = "0 12px 36px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.12)";
-        el.style.backgroundColor = "rgba(17, 24, 39, 0.45)";
+        const light = isLightMode();
+        el.style.borderColor = light
+          ? "rgba(148, 163, 184, 0.35)"
+          : "rgba(255, 255, 255, 0.08)";
+        el.style.boxShadow = light
+          ? "0 8px 32px rgba(15,23,42,0.08), 0 2px 8px rgba(15,23,42,0.06), inset 0 1px 0 rgba(255,255,255,0.95)"
+          : "0 12px 36px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.12)";
+        el.style.backgroundColor = light
+          ? "rgba(255, 255, 255, 0.52)"
+          : "rgba(17, 24, 39, 0.45)";
       }}
     >
       <div className="glass-rim-top" />
