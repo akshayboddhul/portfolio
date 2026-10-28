@@ -1,33 +1,32 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Akshay Shrinivas Boddhul | Senior Databricks Data Engineer",
+  title: "Akshay Shrinivas Boddhul — Senior Data Engineer",
   description:
-    "Senior Data Engineer with 5+ years of experience designing and building scalable data platforms using Databricks, Apache Spark, and AWS. Expertise in high-performance ETL/ELT pipelines, lakehouse architectures, and distributed data systems.",
+    "Senior Data Engineer with 5+ years of experience designing and building scalable lakehouses, distributed data pipelines, and high-performance analytical systems with Databricks, Apache Spark, Delta Lake, and AWS.",
   keywords: [
+    "Akshay Shrinivas Boddhul",
+    "Senior Data Engineer",
     "Databricks",
-    "Data Engineer",
-    "PySpark",
-    "Delta Lake",
     "Apache Spark",
-    "ClickHouse",
-    "Rockset",
-    "AWS",
-    "Azure",
-    "Unity Catalog",
+    "Delta Lake",
+    "PySpark",
     "Medallion Architecture",
-    "Akshay Boddhul",
-    "Fission Labs",
-    "LangChain",
-    "RAG",
+    "Lakehouse",
+    "ClickHouse",
+    "AWS",
+    "Agilisium",
+    "Data Pipelines",
+    "Data Architecture",
   ],
+  authors: [{ name: "Akshay Shrinivas Boddhul" }],
   openGraph: {
-    title: "Akshay Shrinivas Boddhul | Senior Databricks Data Engineer",
+    title: "Akshay Shrinivas Boddhul — Senior Data Engineer",
     description:
-      "Engineering data at the speed of thought. 5+ years of distributed computing, Medallion Architecture, and real-time streaming analytics.",
+      "Behind every reliable data product is a thoughtfully engineered system. Explore production lakehouses, pipeline architectures, and engineering principles.",
     type: "website",
+    locale: "en_US",
   },
 };
 
@@ -37,23 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('portfolio-theme') || 'dark';
-                document.documentElement.classList.remove('dark', 'light');
-                document.documentElement.classList.add(theme);
-                document.documentElement.setAttribute('data-theme', theme);
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
-      <body className="noise-overlay">
-        <ThemeProvider>{children}</ThemeProvider>
+    <html lang="en">
+      <body className="antialiased min-h-screen flex flex-col">
+        {children}
       </body>
     </html>
   );
